@@ -11,6 +11,7 @@ import os
 # RGB colours for `road` and `other`
 road_rgb = np.array([127, 63, 128])
 other_rgb = np.array([0, 0, 0])
+white_rgb = np.array([255, 255, 255])
 
 """
     @method recolour_image
@@ -27,6 +28,8 @@ def recolour_image(img, road_rgb = road_rgb, other_rgb = other_rgb):
             current_pixel = (img[y][x])
             if np.array_equal(current_pixel, road_rgb) is False:
                 img[y][x] = other_rgb
+            else:
+                img[y][x] = white_rgb
 
     # Return the updated image
     return img
@@ -34,8 +37,8 @@ def recolour_image(img, road_rgb = road_rgb, other_rgb = other_rgb):
 if __name__ == "__main__":
     # Make folders for the processed images for scenes and masks
     try:
-        os.makedirs("../data/processed/train/road_mask")
-        os.makedirs("../data/processed/val/road_mask")
+        os.makedirs("../data/processed/train/binary_road_mask")
+        os.makedirs("../data/processed/val/binary_road_mask")
     except FileExistsError as e:
         print(f"Directories already created: {e}")
         pass
@@ -49,7 +52,7 @@ if __name__ == "__main__":
         road_img = recolour_image(img)
 
         # Save the road masks
-        cv2.imwrite(f"../data/processed/train/road_mask/{image_file}", road_img)
+        cv2.imwrite(f"../data/processed/train/binary_road_mask/{image_file}", road_img)
 
 
     # Generate road masks for the validation set
@@ -61,4 +64,4 @@ if __name__ == "__main__":
         road_img = recolour_image(img)
 
         # Save the road masks
-        cv2.imwrite(f"../data/processed/val/road_mask/{image_file}", road_img)
+        cv2.imwrite(f"../data/processed/val/binary_road_mask/{image_file}", road_img)
