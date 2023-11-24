@@ -17,6 +17,7 @@ raw_images_path = "../data/processed/val/image"
         - M: 20
         - H: 30
 """
+# @todo: create a plot b/w reduced dataset size and `max_hamming_distance`
 max_hamming_distance = 10
 
 # Find duplicates to remove
