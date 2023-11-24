@@ -10,7 +10,14 @@ d_hasher = DHash()
 
 # Load the images and set the hamming distance threshold
 raw_images_path = "../data/processed/val/image"
-max_hamming_distance = 30
+
+"""
+    Data Compression Schema
+        - L: 10
+        - M: 20
+        - H: 30
+"""
+max_hamming_distance = 10
 
 # Find duplicates to remove
 duplicates_to_remove = d_hasher.find_duplicates_to_remove(
