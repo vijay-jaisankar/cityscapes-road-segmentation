@@ -9,7 +9,7 @@ from imagededup.methods import DHash #noqa
 d_hasher = DHash()
 
 # Load the images and set the hamming distance threshold
-raw_images_path = "../data/processed/val/image"
+raw_images_path = "../data/processed/train/image"
 
 """
     Data Compression Schema
@@ -18,7 +18,7 @@ raw_images_path = "../data/processed/val/image"
         - H: 30
 """
 # @todo: create a plot b/w reduced dataset size and `max_hamming_distance`
-max_hamming_distance = 25
+max_hamming_distance = 30
 
 # Find duplicates to remove
 duplicates_to_remove = d_hasher.find_duplicates_to_remove(
@@ -33,7 +33,7 @@ unique_images.sort()
 print(unique_images)
 
 # Save the unique images
-with open(f"unique_dhash_{max_hamming_distance}.txt", "w") as f:
+with open(f"train_unique_dhash_{max_hamming_distance}.txt", "w") as f:
     for img_file_name in unique_images:
         f.write(f"{img_file_name}\n")
 
