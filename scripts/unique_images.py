@@ -18,7 +18,7 @@ raw_images_path = "../data/processed/val/image"
         - H: 30
 """
 # @todo: create a plot b/w reduced dataset size and `max_hamming_distance`
-max_hamming_distance = 10
+max_hamming_distance = 25
 
 # Find duplicates to remove
 duplicates_to_remove = d_hasher.find_duplicates_to_remove(
